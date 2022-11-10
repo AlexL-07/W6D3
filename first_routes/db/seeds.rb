@@ -17,3 +17,8 @@ artwork3 = Artwork.create!(title: 'idc' , artist_id: user2.id, image_url: 'www.i
 ArtworkShare.create!(artwork_id: artwork1.id, viewer_id: user1.id)
 ArtworkShare.create!(artwork_id: artwork2.id, viewer_id: user2.id)
 ArtworkShare.create!(artwork_id: artwork3.id, viewer_id: user1.id)
+
+
+comment1 = Comment.create!(author_id: user1.id , artwork_id: artwork1.id, body: 'wow, i love sunflowers')
+comment2 = Comment.create!(author_id: user1.id, artwork_id: artwork2.id, body: 'ive never seen a sky so dark' )
+comment3 = Comment.create!(author_id: user2.id, artwork_id: artwork1.id, body: 'this is so lame')

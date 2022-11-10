@@ -12,6 +12,12 @@ class Artwork < ApplicationRecord
         through: :artwork_shares,
         source: :viewer
 
+    has_many :comments,
+        foreign_key: :artwork_id,
+        class_name: :Comment, 
+        inverse_of: :artwork,
+        dependent: :destroy
+
     def self.artworks_for_user_id(user_id)
         Artwork.joins(:artwork_shares).where('artwork_shares.viewer_id = (?) OR artworks.artist_id = (?)', user_id, user_id).distinct
     end
