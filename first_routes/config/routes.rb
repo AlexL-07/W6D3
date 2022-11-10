@@ -14,6 +14,12 @@ Rails.application.routes.draw do
     resources :artworks, only: :index
    end
 
+   resources :comments, only: [:create, :destroy]
+
+   resources :users, :artworks do 
+    resources :comments, only: [:index]
+   end
+
   #get 'users', to: 'users#index'
   #get 'users/:id', to: 'users#show'
   #post 'users', to: 'users#create'
