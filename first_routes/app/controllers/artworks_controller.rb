@@ -1,7 +1,7 @@
 class ArtworksController < ApplicationController
 
     def index
-        artwork = Artwork.all
+        artwork = Artwork.artworks_for_user_id(params[:user_id])
         render json: artwork
     end
 
@@ -22,7 +22,7 @@ class ArtworksController < ApplicationController
     def update
         artwork = Artwork.find_by(id: params[:id])
         if artwork.update(artwork_params)
-            redirect_to artworks_url(artwork.id)
+            redirect_to artwork_url(artwork.id)
         else
            render json: artwork.errors.full_messages, status: 422
         end 

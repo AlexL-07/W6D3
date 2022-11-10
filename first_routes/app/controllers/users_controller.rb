@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     def update
         user = User.find_by(id: params[:id])
         if user.update(user_params)
-            redirect_to users_url(user.id)
+            redirect_to user_url(user.id)
         else
             render json: user.errors.full_messages, status: :unprocessible_entity
         end

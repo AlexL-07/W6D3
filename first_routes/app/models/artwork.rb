@@ -12,5 +12,7 @@ class Artwork < ApplicationRecord
         through: :artwork_shares,
         source: :viewer
 
-    
+    def self.artworks_for_user_id(user_id)
+        Artwork.joins(:artwork_shares).where('artwork_shares.viewer_id = (?) OR artworks.artist_id = (?)', user_id, user_id).distinct
+    end
 end
